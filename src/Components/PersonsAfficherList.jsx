@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import client from "../api/client";
+import client from "../APIs/client";
 
 export default function PersonList() {
+
+  //  State setup using the useState hook
   const [list, setList] = useState([]);
+
+  //  Data fetching using the useEffect hook
   useEffect(() => {
 
     async function load() {
@@ -15,7 +19,9 @@ export default function PersonList() {
     }
 
     load();
-  }, []);
+  }, []);// The empty dependency array [] ensures this runs only once after the initial render
+
+  // --- Rendering Logic ---
 
   return (
     <ul>

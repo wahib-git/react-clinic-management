@@ -1,7 +1,7 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
-import PersonList from "./Components/PersonsList";
-import PersonsForm from "./Components/PersonsForm";
+import PersonList from "./Components/PersonsAfficherList";
+import PersonsForm from "./Components/PersonsFormulaire";
 
 function Home() {
   return <p>Bienvenue. Testez la liste d'utilisateurs et le formulaire.</p>;
