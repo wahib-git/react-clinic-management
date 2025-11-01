@@ -1,39 +1,31 @@
-import React from "react";
+import { NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
+import PersonList from "./Components/PersonsList";
+import PersonsForm from "./Components/PersonsForm";
 
-class App extends React.Component {
-  state = {
-    monTexte: "Bonjour tout le monde !",
-    personnes: ["Alice", "Bob", "Charlie"],
-    personne: "",
-  };
-
-  addPerson = (event) => {
-    event.preventDefault();
-    const name = this.state.personne.trim();
-    if (!name) return;
-    this.setState((s) => ({ personnes: [...s.personnes, name], personne: "" }));
-  };
-
-  changeHandler = (event) => {
-    this.setState({ personne: event.target.value });
-  };
-
-  render() {
-    return (
-      <form onSubmit={this.addPerson}>
-        <h2>{this.state.monTexte}</h2>
-        <h3>bonjour {this.state.personne || "..."}</h3>
-        <input type="text" value={this.state.personne} onChange={this.changeHandler} />
-        <button type="submit">Ajouter</button>
-        <ul>
-          {this.state.personnes.map((p, idx) => (
-            <li key={idx}>{p}</li>
-          ))}
-        </ul>
-      </form>
-    );
-  }
+function Home() {
+  return <p>Bienvenue. Testez la liste d'utilisateurs et le formulaire.</p>;
 }
 
-export default App;
+function NotFound() {
+  return <p>Page introuvable.</p>;
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <nav style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+        <NavLink to="/" end>Accueil</NavLink>
+        <NavLink to="/users">Utilisateurs (API)</NavLink>
+        <NavLink to="/form">Formulaire</NavLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<PersonList />} />
+        <Route path="/form" element={<PersonsForm />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+}
