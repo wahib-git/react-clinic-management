@@ -1,31 +1,18 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-import "./App.css";
-import PersonList from "./Components/PersonsAfficherList";
-import PersonsForm from "./Components/PersonsFormulaire";
+import Header from './Components/Header';
+import Hero from './Components/Hero';
+import Features from './Components/Features';
+import Footer from './Components/Footer';
+import './App.css'; // Import your styles
 
-function Home() {
-  return <p>Bienvenue. Testez la liste d'utilisateurs et le formulaire.</p>;
-}
+function App() {
 
-function NotFound() {
-  return <p>Page introuvable.</p>;
-}
-
-export default function App() {
   return (
     <div className="App">
-      <nav style={{ display: "flex", gap: 12, marginBottom: 16 }}>
-        <NavLink to="/" end>Accueil</NavLink>
-        <NavLink to="/users">Utilisateurs (API)</NavLink>
-        <NavLink to="/form">Formulaire</NavLink>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/users" element={<PersonList />} />
-        <Route path="/form" element={<PersonsForm />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Header />
+      <Hero />
+      <Features />
+      <Footer />
     </div>
   );
 }
+export default App;
