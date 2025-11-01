@@ -1,22 +1,37 @@
 import React from "react";
 import "./App.css";
-import axios from "axios";
 
 class App extends React.Component {
-  state = { ListPersons: [] };
-  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`).then((res) => {
-      const persons = res.data;
-      this.setState({ ListPersons: persons });
-    });
-  }
+  state = {
+    monTexte: "Bonjour tout le monde !",
+    personnes: ["Alice", "Bob", "Charlie"],
+    personne: "",
+  };
+
+  addPerson = (event) => {
+    event.preventDefault();
+    const name = this.state.personne.trim();
+    if (!name) return;
+    this.setState((s) => ({ personnes: [...s.personnes, name], personne: "" }));
+  };
+
+  changeHandler = (event) => {
+    this.setState({ personne: event.target.value });
+  };
+
   render() {
     return (
-      <ul>
-        {this.state.ListPersons.map((person) => (
-          <li key={person.id}>{person.name}</li>
-        ))}
-      </ul>
+      <form onSubmit={this.addPerson}>
+        <h2>{this.state.monTexte}</h2>
+        <h3>bonjour {this.state.personne || "..."}</h3>
+        <input type="text" value={this.state.personne} onChange={this.changeHandler} />
+        <button type="submit">Ajouter</button>
+        <ul>
+          {this.state.personnes.map((p, idx) => (
+            <li key={idx}>{p}</li>
+          ))}
+        </ul>
+      </form>
     );
   }
 }
