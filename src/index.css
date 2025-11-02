@@ -1,1 +1,82 @@
-@import "tailwindcss";
+/* Définition des variables de couleur pour une gestion facile */
+:root {
+  --primary-color: #007bff; /* Bleu vif pour les accents */
+  --secondary-color: #6c757d; /* Gris pour le texte secondaire */
+  --background-color: #f8f9fa; /* Arrière-plan très clair */
+  --text-color: #343a40; /* Texte principal sombre */
+  --container-bg: #ffffff; /* Arrière-plan du conteneur (blanc) */
+}
+
+/* ----------------------------------- */
+/* Styles généraux du corps et de la page */
+/* ----------------------------------- */
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex; /* Pour centrer le contenu de la page */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ----------------------------------- */
+/* Style du conteneur principal */
+/* ----------------------------------- */
+
+.container {
+  background-color: var(--container-bg);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  max-width: 700px; /* Limite la largeur pour la lisibilité */
+  width: 90%;
+  text-align: center; /* Centre le texte à l'intérieur du conteneur */
+}
+
+/* ----------------------------------- */
+/* Styles des titres et des paragraphes */
+/* ----------------------------------- */
+
+.container h1 {
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+  font-size: 2em; /* Taille de police plus grande pour le titre principal */
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+/* Remarque : Le h2 a déjà un style inline (color: 'darkblue') dans votre code JS, 
+   mais vous pouvez le styliser davantage ici si vous retirez le style inline. */
+/* h2 {
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+} */
+
+.container p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: var(--text-color);
+}
+
+/* Style spécifique pour la date et l'heure */
+.container p:last-child {
+  font-style: italic;
+  margin-top: 25px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.container strong {
+  font-weight: bold;
+  color: #c9302c; /* Couleur forte pour l'heure/date */
+  display: block; /* Met l'heure/date sur sa propre ligne si nécessaire */
+  margin-top: 5px;
+  font-size: 1.1em;
+}
